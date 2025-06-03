@@ -1,0 +1,55 @@
+<TaskCard>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: '120dp'
+    padding: '10dp'
+    spacing: '5dp'
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10]
+
+    Label:
+        text: root.category
+        font_size: '14sp'
+        color: 0.5, 0.5, 0.5, 1
+
+    Label:
+        text: root.title
+        font_size: '18sp'
+        bold: True
+        color: 0.2, 0.2, 0.2, 1
+
+    BoxLayout:
+        size_hint_y: None
+        height: '30dp'
+        spacing: '10dp'
+        Label:
+            text: root.time
+            color: 0.4, 0.4, 0.4, 1
+        Label:
+            text: root.status
+            size_hint_x: None
+            width: '80dp'
+            color: 1, 1, 1, 1
+            canvas.before:
+                Color:
+                    rgba: root.status_color
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10]
+
+<TaskManagerUI>:
+    orientation: 'vertical'
+    ScrollView:
+        GridLayout:
+            id: task_container
+            cols: 1
+            padding: 10
+            spacing: 10
+            size_hint_y: None
+            height: self.minimum_height
